@@ -1,0 +1,18 @@
+namePrefix: localnode-
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: Ingress
+    patch: |
+      - op: replace
+        path: /spec/rules/0/host
+        value: local.devopstest.com
+
+secretGenerator:
+  - name: nodesecret
+    behavior: replace
+    literals:
+      - google-key=QUl6YVN5Qm1aY0VubWpGNXRHMVpTd2tSdGtxcGkxU3lrNDZ1UmVvZGV2
+

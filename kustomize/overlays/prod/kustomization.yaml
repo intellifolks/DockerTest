@@ -1,0 +1,18 @@
+namePrefix: prodnode-
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: Ingress
+    patch: |
+      - op: replace
+        path: /spec/rules/0/host
+        value: prod.devopstest.com
+
+secretGenerator:
+  - name: nodesecret
+    behavior: replace
+    literals:
+      - google-key=AIzaSyBmZcEnmjF5tG1ZSwkRtkqpi1Syk46uReoprod
+
